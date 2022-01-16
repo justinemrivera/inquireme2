@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title%} Create Post {% endblock title %}
+{% block content %}
+
+
+
+<form action="/showform/" method="POST">
+
+{% csrf_token %}
+{{ title_form.as_p }}
+{{ body_form.as_p }}
+<button type="submit" class="btn btn-success">Create</button>
+</form>
+
+{% endblock content %}

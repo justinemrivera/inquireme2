@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post_list.title }}{% endblock title %}
+{% block content %}
+
+    <ul>
+    {% for post in post_list %}
+    
+    
+    <li>{{ post_list.title }}</li>
+    
+    {% endfor %}
+    </ul>
+   
+<!-- <h1>{{ post_list.title }} </h1>
+    <img class="detail-img" src={{ post_list.picture }}>
+    <p class="detail-subtext"> created by {{ post.author }} | On {{ post.created_at }}</p>
+    <p>{{ post_list.body }}</p>
+    <button type="submit" class="btn btn-success">Go Back</button>
+    {% if user.is_authenticated %}
+    
+    <a href="{% url 'edit_post' post.id %}" class="card-link">Update</a>
+    
+    
+    {% endif %}
+    </div> -->
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}InQuireMe - Signup {% endblock title %}
+{% block content %}
+
+<h1>SignUp</h1>
+<table>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_table }}
+    
+<button class="button" type="submit">Submit</button>
+</form>
+</table>
+
+
+
+
+{% endblock content %}   
