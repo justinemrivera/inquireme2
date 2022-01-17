@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import IqUpdateView
+from .views import IqUpdateView, upload_file
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +29,7 @@ urlpatterns = [
 urlpatterns = [
     path('', include('accounts.urls')),
     path('edit/', IqUpdateView.as_view(), name='edit'),
+    path('signuppro/', upload_file, name='signuppro')
 
 
 

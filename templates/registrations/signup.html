@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
-
+<body class= contain-grey>
 
 {% block title %}InQuireMe - Signup {% endblock title %}
 {% block content %}
 
-<h1>SignUp</h1>
+<h3>Standard Account Signup</h3>
 <table>
 <form method="POST">
+
     {% csrf_token %}
     {{ form.as_table }}
     
@@ -15,7 +16,7 @@
 </form>
 </table>
 
-
+</body>
 
 
 {% endblock content %}   

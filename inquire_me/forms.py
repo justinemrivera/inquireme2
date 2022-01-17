@@ -8,3 +8,8 @@ class PostForm(forms.Form):
     created_at = forms.DateTimeField()
     username = forms.CharField(max_length=30)
     picture = forms.ImageField
+
+
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()

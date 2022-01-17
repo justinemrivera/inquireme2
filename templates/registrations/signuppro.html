@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
 
-
-
+<body class=contain-grey>
 {% block title %}InQuireMe - SignupPro {% endblock title %}
 {% block content %}
-<h1>SignUp</h1>
+
+<h3>Create New Pro Account</h3>
+<h6>With a Pro account users can answer questions in categories they're verified in!</h6>
 <table>
-<form method="POST">
+<form method="POST" class="formfield">
     {% csrf_token %}
     {{ form.as_table }}
  
 
 <button class="button" type="submit">Submit</button> 
 </form>
+
 </table>
+
+<form type = 'post' enctype ="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value = "Submit">
+</form>
+
+</body>
 
 {% endblock content %}

@@ -1,3 +1,58 @@
-h1 {
-    color: green;
+h3 {
+    padding-top: 20px;
+}
+
+h6 {
+    padding-bottom: 20px;
+}
+
+.contain-grey {
+    background-color: grey;
+}
+
+.contain-white {
+    background-color: white;
+}
+
+.navbar {
+    background-color: rgb(132, 6, 250);
+
+}
+
+.nav-link {
+    color: white;
+}
+
+button {
+    background-color: rgb(132, 6, 250);
+    color: white;
+}
+
+
+
+
+
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+    #primary {
+        width: 67%;
+    }
+
+    #secondary {
+        width: 30%;
+        margin-left: 3%;
+    }
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+    #primary {
+        width: 100%;
+    }
+
+    #secondary {
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
 }
