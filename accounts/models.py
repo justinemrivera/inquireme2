@@ -44,15 +44,3 @@ class User(AbstractUser):
 class Color(models.Model):
     color = models.CharField(
         max_length=6, choices=COLOR_CHOICES, default='green')
-
-
-# Create your models here.
-
-# create view
-# if request.method == "POST":
-# formdata = request.data
-# newUser = User(
-#     username = formdata.username,
-
-# )
-# newuser.save()

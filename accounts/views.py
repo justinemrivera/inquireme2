@@ -1,11 +1,7 @@
 from django.shortcuts import redirect, render
-
 from inquire_me.forms import PostForm
-from .forms import SignUpForm, LoginForm, SignUpProForm
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, get_user_model
-from django.urls import reverse_lazy
-from django.views import generic
+from .forms import SignUpForm, SignUpProForm, LoginForm
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.views.generic import TemplateView
 from accounts.models import User
 from inquire_me.models import Post
@@ -19,17 +15,6 @@ from django.views.generic.edit import (
 
 # Create your views here.
 User = get_user_model()
-
-
-class HomePageView(TemplateView):
-    template_name = "base.html"
-
-
-# class SignUpView(generic.CreateView):
-#     model = User
-#     form_class = UserCreationForm
-#     success_url = reverse_lazy('login')
-#     template_name = 'registrations/signup.html'
 
 
 def SignUpView(request):
@@ -50,7 +35,7 @@ def SignUpView(request):
         return redirect('login')
     else:
         form = SignUpForm()
-        return render(request, 'registrations/signup.html', {'form': form})
+        return render(request, 'registration/signup.html', {'form': form})
 
 
 def SignUpProView(request):
@@ -75,29 +60,32 @@ def SignUpProView(request):
         return redirect('login')
     else:
         form = SignUpProForm()
-        return render(request, 'registrations/signuppro.html', {'form': form})
+        return render(request, 'registration/signuppro.html', {'form': form})
 
 
 def LoginView(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            user = User.objects.get(username=username)
-            if user.password == form.cleaned_data['password']:
-                login(request, user)
-        return redirect('iqfeed')
+            form.save()
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            User = authenticate(request, username=username, password=password)
+            if User is not None:
+                login(request, User)
+                return redirect('iqfeed')
     else:
-        form = LoginForm()
-        return render(request, 'registrations/login.html', {form: form})
-
-# class LoginView(generic.CreateView):
-#     form_class = UserCreationForm
-#     template_name = 'registrations/login.html'
+        form = LoginForm
+    return render(request, 'registration/login.html', {'form': form})
 
 
-# class FeedView(TemplateView):
-#   template_name = 'feed.html'
+# error when i hit submit on login.html
+# ValueError at /login/
+# The view accounts.views.LoginView didn't return an HttpResponse object. It returned None instead.
+
+
+class HomePageView(TemplateView):
+    template_name = 'base.html'
 
 
 class IQroomView(TemplateView):
@@ -138,18 +126,19 @@ def PostView(request):
     if request.method == "POST":
         # Get Form Data
         form = PostForm(request.POST)
+        print(form)
         if form.is_valid():
             # Create new user with form data
             newPost = Post()
             newPost.title = form.cleaned_data['title']
             newPost.body = form.cleaned_data['body']
             newPost.created_at = form.cleaned_data['created_at']
-            newPost.username = form.cleaned_data['username']
-            newPost.CATEGORY_VERIFIED = form.cleaned_data['category_verified']
-            newPost.picture = form.cleaned_data['picture']
+            newPost.User = form.cleaned_data['username']
+            # newPost.picture = form.cleaned_data['picture']
 
         # Save new user
-            newPost.save()
+            newPost2 = newPost
+            newPost2.save()
 
         # Redirect to index
         return redirect('iqfeed')
@@ -161,13 +150,6 @@ def PostView(request):
 def All_posts(request):
     post_list = Post.objects.all()
     context = {
-        'post_list': post_list,
+        'post_list': post_list
     }
     return render(request, 'feed.html', context)
-
-
-# class FeedView(ListView):
-#     template_name = 'feed.html'
-
-#     def get_queryset(self):
-#         return Post.objects.all()

@@ -23,10 +23,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-]
-
-urlpatterns = [
     path('', include('accounts.urls')),
     path('edit/', IqUpdateView.as_view(), name='edit'),
     path('signuppro/', upload_file, name='signuppro')

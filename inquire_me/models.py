@@ -8,8 +8,8 @@ class Post(models.Model):
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     username = models.ForeignKey(
-        get_user_model(), on_delete=models.CASCADE, blank=True, null=True),
-    picture = models.ImageField(upload_to='images/')
+        get_user_model(), on_delete=models.CASCADE, blank=True, null=True)
+    #picture = models.ImageField(null=True)
 
     def __str__(self):
         return self.title

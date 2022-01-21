@@ -20,14 +20,14 @@ from inquireme_2.models import Post
 #                   })
 
 
-def showform(request):
-    form = PostModelForm(request.POST or None)
-    if form.is_valid():
-        form.save()
+# def showform(request):
+#     form = PostModelForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
 
-    context = {'form': form}
+#     context = {'form': form}
 
-    return render(request, 'templates/feed.html', context)
+#     return render(request, 'templates/feed.html', context)
 
 
 def edit_post(request, pk=None):

@@ -3,16 +3,16 @@
 
 
 {% block title %}Post {% endblock title %}
-<div class= contain-white>
+
 {% block content %}
 
 <h1>Add new post</h1>
 <table>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_table }}
 <button class="button" type="submit">Create</button>
 </form>
 </table>
-</div>
+
 {% endblock content %}
