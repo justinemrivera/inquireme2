@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
-
+{% load bootstrap %}
 
 
 {% block title %}Post {% endblock title %}
 
 {% block content %}
+{% if user.is_authenticated %}
+      <h1>Add new post</h1>
+      <table>
+      <form method="post" enctype="multipart/form-data">
+  
+            {% csrf_token %}
+            {{ form|bootstrap }}
+      
+   
+      <button class="button" type="submit">Create</button>
+      </form>
+      </table>
+{% else %}
 
-<h1>Add new post</h1>
-<table>
-<form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.as_table }}
-<button class="button" type="submit">Create</button>
-</form>
-</table>
-
+<p>You need to log in first!</p>
+{% endif %}
 {% endblock content %}
+
+
+
+

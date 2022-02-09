@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{%if category_posts %}
+<h1>{{ cats }}</h1>
+<ul>
+{% for post in category_posts %}
+{{ post.created_at }}<br>
+<li>{{ post.title }} </li>
+            
+    
+    
+    
+    By:{{ post.username }}<br>
+   
+
+  
+    {{ post.body}}<br><br>
+
+
+    
+
+
+{% endfor %}
+
+</ul>
+{% else %}
+<h2>Sorry this page doesn't exist.</h2>
+{% endif %}
+
+{% endblock content %}

@@ -16,16 +16,30 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import IqUpdateView, upload_file
+# from .views import IqUpdateView, upload_file
 from django.conf import settings
 from django.conf.urls.static import static
+
+
+# from accounts.views import All_categories
+from .views import (IqUpdateView, IqDeleteView,
+                    PostDetailView, CategoryDetailView, cat)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
-    path('edit/', IqUpdateView.as_view(), name='edit'),
-    path('signuppro/', upload_file, name='signuppro')
+    path('category/<str:cats>/', CategoryDetailView, name='post_category'),
+    path('feed/<int:pk>/edit', IqUpdateView.as_view(), name='edit_post'),
+    path('feed/<int:pk>/delete', IqDeleteView.as_view(), name='delete_post'),
+    path('detail/<int:pk>', PostDetailView.as_view(), name='detail'),
+    path('', cat, name='home'),
+    # path('home/', All_categories, name='home'),
+
+
+
+
+    # path('signuppro/', upload_file, name='signuppro')
 
 
 

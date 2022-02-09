@@ -1,5 +1,6 @@
 h3 {
     padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 h6 {
@@ -15,7 +16,7 @@ h6 {
 }
 
 .navbar {
-    background-color: rgb(132, 6, 250);
+    background-color: rgb(91, 6, 250);
 
 }
 
@@ -24,13 +25,41 @@ h6 {
 }
 
 button {
-    background-color: rgb(132, 6, 250);
+    background-color: rgb(91, 6, 250);
     color: white;
 }
 
 
 
+card {
 
+    background-color: rgb(91, 6, 250);
+}
+
+.row {
+
+    box-shadow: 20px;
+}
+
+.card-img-top {
+    height: 200px;
+    width: 253px;
+
+}
+
+
+.form-group {
+    padding-bottom: 20px;
+}
+
+link {
+    color: black
+}
+
+.card-header {
+    color: white;
+    background-color: rgb(91, 6, 250);
+}
 
 /* Media Queries: Tablet Landscape */
 @media screen and (max-width: 1060px) {

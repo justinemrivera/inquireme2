@@ -3,5 +3,51 @@
 {% block title %}{{ post_list.title }}{% endblock title %}
 {% block content %}
     <h3>IQFeed</h3>
-    {{ post_list }}
+    
+    {% for post in post_list%}
+    <p></p>
+    <div class="card text-center ">
+        
+        <div class="card-body">
+          <p class="card-header">{{post.created_at}}</p>
+          <h5 class="card-title">{{post.title}}</h5>
+          <p>{{ post.username }}</p>
+          
+          
+
+          <a href="{% url 'post_category' post.categories %}">{{ post.categories }}</a>
+          
+          <p class="card-text">{{post.body}}</p>
+          <br>
+          
+
+          
+          
+          
+          <a href="{% url 'detail' post.id %}" class="btn btn-primary">Comments</a>
+        </div>
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'detail' post.id %}">Answer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Like</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ">Share</a>
+            
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+      {% endfor %}
+      
+        
+
+
+
+
+     
 {% endblock content %}

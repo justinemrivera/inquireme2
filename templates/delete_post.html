@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 
+{% block title %}Delete Post{% endblock title %}
 
-
-{% block title %}Post {% endblock title %}
 {% block content %}
-
-<h1>Are you sure you want to delete post?</h1>
-{% for user in All.users %}
-{{ All.users }}
-
-{% endfor %}
-
+<h1>Delete Post</h1>
+<p>Are you sure you want to remove "{{ post.title }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>>
+</form>
 {% endblock content %}

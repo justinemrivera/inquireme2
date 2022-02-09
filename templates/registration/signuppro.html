@@ -10,7 +10,10 @@
 <form method="POST" class="formfield">
     {% csrf_token %}
     {{ form.as_table }}
- 
+    <div class="mb-3">
+        <label for="formFileSm" class="form-label">Small file input example</label>
+        <input class="form-control form-control-sm" id="formFileSm" type="file">
+      </div>
 
 <button class="button" type="submit">Submit</button> 
 </form>

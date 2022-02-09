@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     'inquire_me',
     'iqfeed',
     'iqroom',
+    'bootstrapform',
+    'crispy_forms',
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,4 +145,4 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/iqfeed/'
 
 
-AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = 'accounts.User'
